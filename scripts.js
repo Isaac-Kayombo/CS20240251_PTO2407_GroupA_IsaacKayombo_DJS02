@@ -12,6 +12,15 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  // CHECKS FOR CALCULATION BY ZERO
+  if (divider === "0") {
+    result.innerText = "Division not performed. Invaild number provided. Try again";
+
+    // LOGS ERROR WITH CALL STACK IN THE CONSOLE
+    console.error("Error: Attempted division by zero", new Error().stack);
+    return;
+  }
+
   // PERFORMS CALCULATION AND ROUNDS RESULT TO THE NEAREST WHOLE NUMBER
   const finalValue = Math.floor(dividend / divider);
   result.innerText = finalValue;
