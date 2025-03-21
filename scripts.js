@@ -21,6 +21,16 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  // CHECKS FOR NON-NUMERIC INPUTS
+  if (isNaN(dividend) || isNaN(divider)) {
+    // REPLACES ENTIRE SCREEN WITH ERROR MESSAGE
+    document.body.innerHTML = "<h1>Something critical went wrong. Please reload the page</h1>";
+
+    // LOGS ERROR WITH CALL STACK IN THE CONSOLE
+    console.error("Error: Invaild input. Non-numeric value provided", new Error().stack);
+    return;
+  }
+
   // PERFORMS CALCULATION AND ROUNDS RESULT TO THE NEAREST WHOLE NUMBER
   const finalValue = Math.floor(dividend / divider);
   result.innerText = finalValue;
